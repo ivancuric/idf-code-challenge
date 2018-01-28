@@ -4,13 +4,15 @@ html {
   background-color: $white;
   color: $black;
   line-height: 1.5;
+  height: 100%;
 }
 
 body {
-  position: relative;
   font-variant-ligatures: common-ligatures;
   font-feature-settings: 'liga', 'clig', 'kern';
   text-rendering: optimizeLegibility;
+  height: 100%;
+  overflow-y: scroll;
 }
 
 img,

@@ -10,7 +10,11 @@
 @import 'base/utils';
 
 // Components
+
+// TODO: fix viewport resize during transition
+
 .img-set {
+  min-height: 100%;
   max-width: 90vw;
   margin: 40px auto;
   position: relative;

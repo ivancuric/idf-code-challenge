@@ -23,19 +23,49 @@
 
 .img-item {
   padding: 2%;
-  margin: 10px;
+  margin: 20px 0;
   background: $white;
   transform-origin: 50% 50%;
   position: absolute;
   top: 0;
   left: 0;
+  // it's ok to have layers here, plus it adds antialiasing for the angled edges
   will-change: transform;
+
+  .animatable & {
+    transition: transform 300ms $ease;
+  }
+
+  .expanded & {
+    position: relative;
+    transform: none !important;
+  }
+
+  // renders the shadows to appear as if the images are on the same height
+  .flat & {
+    &::before {
+      opacity: 0;
+    }
+
+    &::after {
+      opacity: 1;
+    }
+  }
 
   &::before {
     @include divfill();
     content: '';
     z-index: 0;
     transition: opacity 300ms $ease;
+  }
+
+  &::after {
+    @include divfill();
+    content: '';
+    z-index: 0;
+    transition: opacity 300ms $ease;
+    box-shadow: $z1;
+    opacity: 0;
   }
 
   &:nth-of-type(1) {

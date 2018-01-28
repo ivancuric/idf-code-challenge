@@ -12,6 +12,24 @@ export function preloadImage(url) {
 }
 
 /**
+ * Generic 'run once'
+ * @param {Node} element - Element
+ * @param {Event} event - Event to listen
+ */
+
+export function listenOnce(element, ...events) {
+  return new Promise(resolve => {
+    const onEvent = event => {
+      resolve(event);
+      element.removeEventListener(event, onEvent);
+    };
+    events.forEach(event => {
+      element.addEventListener(event, onEvent);
+    });
+  });
+}
+
+/**
  * Remove element
  * @param {HTMLElement} el
  */

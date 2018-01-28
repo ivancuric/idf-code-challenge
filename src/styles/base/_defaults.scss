@@ -16,6 +16,7 @@ body {
 img,
 video {
   display: block;
+  user-select: none;
 }
 
 a {

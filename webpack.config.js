@@ -157,7 +157,8 @@ const baseConfig = {
 
 const legacyConfig = Object.assign({}, baseConfig, {
   entry: {
-    app: paths.src.js + 'app.js',
+    images: paths.src.js + 'images.js',
+    widget: paths.src.js + 'widget.js',
   },
   module: {
     rules: [

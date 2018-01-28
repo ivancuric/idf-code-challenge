@@ -38,7 +38,6 @@ const isProd = nodeEnv === 'production';
 
 const outputPath = isProd ? paths.temp : paths.dist;
 
-
 const bsInit = promisify(bs.init);
 
 // generic gulp error handler
@@ -219,7 +218,13 @@ gulp.task('fonts', () =>
 // browsersync
 gulp.task('serve', () => {
   bsInit({
-    proxy: 'localhost:8000',
+    server: {
+      baseDir: ['dist/'],
+    },
+    serveStatic: ['dist/html'],
+    serveStaticOptions: {
+      extensions: ['html'], // pretty urls
+    },
     ghostMode: false,
     notify: false,
     ui: false,

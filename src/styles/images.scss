@@ -1,0 +1,82 @@
+// External
+@import 'sanitize.css/sanitize';
+@import 'breakpoint-sass/stylesheets/breakpoint';
+
+// Defaults
+@import 'base/variables';
+@import 'base/reset';
+@import 'base/mixins';
+@import 'base/defaults';
+@import 'base/utils';
+
+// Components
+.img-set {
+  max-width: 800px;
+  padding: 40px;
+  margin: auto;
+  position: relative;
+}
+
+.img-item {
+  margin: 12px;
+  padding: 20px;
+  position: absolute;
+  background: $white;
+  transform-origin: 30% 60%;
+  will-change: transform;
+
+  &::before {
+    @include divfill();
+    content: '';
+    z-index: 0;
+    transition: opacity 300ms $ease;
+  }
+
+  &:nth-of-type(1) {
+    transform: rotateZ(-5deg);
+    z-index: 3;
+
+    &::before {
+      box-shadow: $z3;
+    }
+  }
+
+  &:nth-of-type(2) {
+    transform: rotateZ(0deg);
+    z-index: 2;
+
+    &::before {
+      box-shadow: $z2;
+    }
+  }
+
+  &:nth-of-type(3) {
+    transform: rotateZ(5deg);
+    z-index: 1;
+
+    &::before {
+      box-shadow: $z1;
+    }
+  }
+}
+
+.img-content {
+  contain: content;
+}
+
+.img {
+  width: 100%;
+  transition: filter 300ms $ease;
+}
+
+.img-sepia {
+  filter: sepia(100%);
+}
+
+.img-grayscale {
+  filter: grayscale(100%);
+}
+
+.img-blur {
+  filter: blur(10px);
+}

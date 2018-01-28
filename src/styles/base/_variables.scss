@@ -1,0 +1,25 @@
+// GREYS
+$white: #fff;
+$grey0: #f5f5f5;
+$grey1: #e0e0e0;
+$grey2: #9e9e9e;
+$grey3: #616161;
+$black: #000;
+
+// MATERIAL DESIGN EASING CURVES
+$ease: cubic-bezier(0.4, 0, 0.2, 1);
+$ease-out: cubic-bezier(0, 0, 0.2, 1);
+$ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+// MATERIAL DESIGN SHADOWS
+$z1: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+  0 3px 1px -2px rgba(0, 0, 0, 0.2);
+$z2: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+  0 2px 4px -1px rgba(0, 0, 0, 0.3);
+$z3: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+  0 3px 5px -1px rgba(0, 0, 0, 0.3);
+
+// BREAKPOINTS
+$S: max-width 899px;
+$M: 900px;
+$L: 960px;

@@ -1,0 +1,62 @@
+html {
+  position: relative;
+  min-width: 320px;
+  background-color: $white;
+  color: $black;
+  line-height: 1.5;
+}
+
+body {
+  position: relative;
+  font-variant-ligatures: common-ligatures;
+  font-feature-settings: 'liga', 'clig', 'kern';
+  text-rendering: optimizeLegibility;
+}
+
+img,
+video {
+  display: block;
+}
+
+a {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+}
+
+span,
+strong {
+  text-decoration: inherit;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  background: $grey2;
+}
+
+button,
+[role='button'],
+label,
+select {
+  user-select: none;
+}
+
+option[value='-1'] {
+  display: none;
+}
+
+::placeholder {
+  color: $grey2;
+  font-weight: 400;
+  font-variant-ligatures: common-ligatures;
+  font-feature-settings: 'liga', 'clig', 'kern';
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: rgba($black, 0.999);
+  color: $white;
+  text-shadow: none;
+}

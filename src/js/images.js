@@ -38,6 +38,7 @@ class ImageSet {
    */
   animate() {
     this.imgSet.classList.add('animatable', 'flat');
+    document.documentElement.scrollTop = 0;
     // feeding an array of promises to resolve to accomodate for mixed or staggered transition durations
     const animationPromises = this.imgItems.map((img, i) => {
       img.style.transform = `rotate(0deg) translateY(${this.rectInfo[i].y - 60}px)`; // magic number (padding + margin)

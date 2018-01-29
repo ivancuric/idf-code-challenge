@@ -113,7 +113,7 @@ class ImageSet {
     });
     // this.imgSet.classList.add('is-expanded');
 
-    Promise.all(animationPromises).then(_ =>
+    Promise.all(animationPromises).then(() =>
       this.imgSet.classList.remove('is-animating'),
     );
   }

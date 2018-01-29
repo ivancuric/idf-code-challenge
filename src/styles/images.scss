@@ -21,7 +21,7 @@
   max-width: 90vw;
   margin: 40px auto;
   position: relative;
-  transition: opacity 400ms $ease;
+  transition: opacity 650ms $ease;
 
   &:not(.is-loaded) {
     opacity: 0;
@@ -44,7 +44,7 @@
     @include divfill();
     content: '';
     z-index: 0;
-    transition: opacity 400ms $ease, visibility 400ms $ease;
+    transition: opacity 650ms $ease, visibility 650ms $ease;
     visibility: visible;
   }
 
@@ -53,7 +53,7 @@
     @include divfill();
     content: '';
     z-index: 0;
-    transition: opacity 400ms $ease, visibility 400ms $ease;
+    transition: opacity 650ms $ease, visibility 650ms $ease;
     box-shadow: $z1;
     opacity: 0;
     visibility: hidden;
@@ -88,7 +88,7 @@
 
   // sorry for the nesting
   .is-animating & {
-    transition: transform 400ms $ease;
+    transition: transform 650ms $ease;
   }
 
   .is-expanded & {

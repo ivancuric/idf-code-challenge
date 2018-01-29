@@ -20,6 +20,10 @@ export function preloadImage(url) {
 export function listenOnce(element, ...events) {
   return new Promise(resolve => {
     const onEvent = event => {
+      // prevent event bubbling
+      if (event.target !== element) {
+        return;
+      }
       resolve(event);
       element.removeEventListener(event, onEvent);
     };

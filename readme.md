@@ -11,7 +11,7 @@ Since I will get bonus cookie points 🍪 for making things backwards-compatible
 Install with `yarn install` or `npm install` and run `yarn start` or `npm start`.
 The server should run on `localhost:3000` hosting files from `/dist/html`.
 
-The pages are therefore available on the following urls:
+The pages will then available on the following urls:
 
 **Images:** [http://localhost:3000/images](http://localhost:3000/images)  
 **Widget:** [http://localhost:3000/widget](http://localhost:3000/widget)

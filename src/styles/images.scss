@@ -57,6 +57,9 @@
     visibility: hidden;
   }
 
+  // manually set rotation, z-index and rotation
+  // could be implemented in a sass loop
+
   &:nth-of-type(1) {
     z-index: 3;
     transform: rotateZ(-5deg);
@@ -114,6 +117,7 @@
   }
 }
 
+// we don't want the filters to bleed out
 .img-content {
   contain: content;
   overflow: hidden;

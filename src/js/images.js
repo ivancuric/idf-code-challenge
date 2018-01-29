@@ -32,7 +32,6 @@ class ImageSet {
    */
   onClick = event => {
     event.preventDefault();
-    console.log(event);
 
     // early exit
     if (this.imgSet.classList.contains('is-animating')) {
@@ -111,7 +110,6 @@ class ImageSet {
       img.removeAttribute('style');
       return listenOnce(img, 'transitionend');
     });
-    // this.imgSet.classList.add('is-expanded');
 
     Promise.all(animationPromises).then(() =>
       this.imgSet.classList.remove('is-animating'),

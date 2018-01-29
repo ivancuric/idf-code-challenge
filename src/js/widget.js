@@ -18,4 +18,3 @@ const url = area.dataset.url;
   const content = await fetch(url).then(response => response.json());
   area.appendChild(createFragment(content.body));
 })();
-

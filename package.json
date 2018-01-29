@@ -8,8 +8,7 @@
     "build:html": "gulp html",
     "build:js": "webpack",
     "build:styles": "gulp styles-production",
-    "build":
-      "cross-env NODE_ENV=production npm-run-all clean:temp build:assets build:styles build:js build:html rewrite",
+    "build": "cross-env NODE_ENV=production npm-run-all clean:temp build:assets build:styles build:js build:html rewrite",
     "clean:dist": "node _scripts/clean-dist",
     "clean:temp": "node _scripts/clean-temp",
     "rebuild": ". ./_scripts/rebuild.sh || true",
@@ -91,6 +90,7 @@
     "svgo-loader": "^1.2.1",
     "url-search-params": "^0.10.0",
     "wait-on": "^2.1.0",
+    "webfontloader": "^1.6.28",
     "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.9.1",
     "webpack-clean-obsolete-chunks": "^0.3.0",

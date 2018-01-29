@@ -36,36 +36,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  // it's ok to have layers here, plus it adds antialiasing for the angled edges
+  // it's ok to have layers here and it adds antialiasing for the angled edges
   will-change: transform;
-
-  .is-animating & {
-    transition: transform 400ms $ease;
-  }
-
-  .is-expanded & {
-    position: relative;
-    transform: none !important;
-
-    &:hover {
-      .img {
-        filter: none;
-      }
-    }
-  }
-
-  // renders the shadows to appear as if the images are on the same height
-  .is-flat & {
-    &::before {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    &::after {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
 
   // the z-indexed shadow
   &::before {
@@ -113,6 +85,35 @@
       box-shadow: $z1;
     }
   }
+
+  // sorry for the nesting
+  .is-animating & {
+    transition: transform 400ms $ease;
+  }
+
+  .is-expanded & {
+    position: relative;
+    transform: none;
+
+    &:hover {
+      .img {
+        filter: none;
+      }
+    }
+  }
+
+  // renders the shadows to appear as if the images are on the same height
+  .is-flat & {
+    &::before {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &::after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 }
 
 .img-content {
@@ -129,6 +130,10 @@
 
   .is-loaded & {
     visibility: visible; // prevent image decoding calculations on load
+  }
+
+  .is-touch.is-expanded & {
+    filter: none;
   }
 }
 

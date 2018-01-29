@@ -20,9 +20,9 @@ class ImageSet {
 
   // "Boots" up the image set
   async init() {
-    window.scroll(0, 0);
     this.imgSet.classList.add('is-loaded'); // fade the images in
     this.imgSet.addEventListener('click', this.onClick);
+    this.imgSet.addEventListener('touchstart', this.onTouchStart);
   }
 
   /**
@@ -32,6 +32,7 @@ class ImageSet {
    */
   onClick = event => {
     event.preventDefault();
+    console.log(event);
 
     // early exit
     if (this.imgSet.classList.contains('is-animating')) {
@@ -46,23 +47,36 @@ class ImageSet {
   };
 
   /**
+   * Detect touch
+   * @param {Event} event
+   */
+  onTouchStart = event => {
+    // early exit
+    if (event.type === 'touchstart') {
+      this.imgSet.classList.add('is-touch');
+      this.imgSet.removeEventListener('touchstart', this.onTouchStart);
+    }
+  };
+
+  /**
    * FLIP (https://aerotwist.com/blog/flip-your-animations/)
    */
   async animateIn() {
     await rafPromise(); // wait for a fresh frame to do the work
-    this.imgSet.classList.add('is-expanded'); // render the is-expanded state under a frame
+    this.imgSet.classList.add('is-expanded'); // render the is-expanded state in under 1 frame
 
     // Get original non-rotated element dimensions
     // This is needed because not all images have the same aspect ratio
     this.rectInfo = this.imgItems.map(img => img.getBoundingClientRect());
-
     this.imgSet.classList.remove('is-expanded'); // And return to normal
 
+    // force a style recalc to prevent animation
+    this.imgSet.getBoundingClientRect();
 
     // START THE ANIMATION
     this.imgSet.classList.add('is-animating', 'is-flat');
 
-    // an array of promises to accomodate for mixed or staggered transition durations
+    // using Promise.all to accomodate for mixed or staggered transition durations
     const animationPromises = this.imgItems.map((img, i) => {
       img.style.transform = `rotate(0deg) translateY(${this.rectInfo[i].y -
         60}px)`; // "magic" number (padding + margin)
@@ -77,9 +91,31 @@ class ImageSet {
     });
   }
 
+  /**
+   * Same as `animateIn()` but in reverse
+   */
   async animateOut() {
-    await rafPromise();
+    this.rectInfo = this.imgItems.map(img => img.getBoundingClientRect());
     this.imgSet.classList.remove('is-expanded');
+
+    this.imgItems.forEach((img, i) => {
+      img.style.transform = `translateY(${this.rectInfo[i].y - 60}px)`;
+    });
+
+    await rafPromise();
+    this.imgSet.classList.add('is-animating');
+    this.imgSet.getBoundingClientRect();
+    this.imgSet.classList.remove('is-flat');
+
+    const animationPromises = this.imgItems.map(img => {
+      img.removeAttribute('style');
+      return listenOnce(img, 'transitionend');
+    });
+    // this.imgSet.classList.add('is-expanded');
+
+    Promise.all(animationPromises).then(_ =>
+      this.imgSet.classList.remove('is-animating'),
+    );
   }
 }
 

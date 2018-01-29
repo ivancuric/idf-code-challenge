@@ -1,3 +1,7 @@
+/* polyfills */
+import 'babel-polyfill';
+import 'whatwg-fetch';
+
 import { preloadImage, rafPromise, listenOnce } from 'utils';
 
 // I like the class approach. Less semicolons.

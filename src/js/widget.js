@@ -1,3 +1,7 @@
+/* polyfills */
+import 'babel-polyfill';
+import 'whatwg-fetch';
+
 import { createFragment } from 'utils';
 import webfontloader from 'webfontloader';
 

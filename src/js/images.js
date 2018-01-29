@@ -23,7 +23,7 @@ class ImageSet {
   }
 
   // "Boots" up the image set
-  async init() {
+  init() {
     this.imgSet.classList.add('is-loaded'); // fade the images in
     this.imgSet.addEventListener('click', this.onClick);
     this.imgSet.addEventListener('touchstart', this.onTouchStart);

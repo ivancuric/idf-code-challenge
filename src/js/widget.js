@@ -15,6 +15,7 @@ const area = document.querySelector('.idf-widget-area');
 const url = area.dataset.url;
 
 (async () => {
-  const content = await fetch(url).then(url => url.json());
+  const content = await fetch(url).then(response => response.json());
   area.appendChild(createFragment(content.body));
 })();
+

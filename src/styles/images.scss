@@ -37,6 +37,7 @@
   // it's ok to have layers here and it adds antialiasing for the angled edges
   will-change: transform;
   display: table; // fit to contents
+  table-layout: fixed; // prevent table calc
 
   // the z-indexed shadow
   &::before {

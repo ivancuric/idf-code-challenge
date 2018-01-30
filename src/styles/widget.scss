@@ -28,6 +28,7 @@
   position: relative;
   z-index: 1;
 
+  // the underline
   &::after {
     content: '';
     position: absolute;
@@ -85,6 +86,7 @@
   height: 24px;
   flex-shrink: 0;
   color: $idf-blue;
+  // base64 inline svg, since I only have an empty div
   background-image: svg-load('svg/chevron-right.svg', fill='#{$idf-blue}');
   background-size: contain;
   background-position: center;

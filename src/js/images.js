@@ -77,16 +77,17 @@ class ImageSet {
     this.imgSet.getBoundingClientRect();
 
     // START THE ANIMATION
-    this.imgSet.classList.add('is-animating');
+    this.imgSet.classList.add('is-animating'); // ie11 does not support multiple parameters
     this.imgSet.classList.add('is-flat');
 
     // using Promise.all to accomodate for mixed or staggered transition durations
     const animationPromises = this.imgItems.map((img, i) => {
-      img.style.transform = `rotate(0deg) translateY(${this.rectInfo[i].y -
-        60}px)`; // "magic" number (padding + margin)
+      img.style.transform = `rotateZ(0deg) translateY(${this.rectInfo[i].top -
+        60}px)`; // 60 = "magic" number (padding + margin)
       img.getBoundingClientRect();
       return listenOnce(img, 'transitionend');
     });
+
     // when all elements are done animating
     Promise.all(animationPromises).then(async () => {
       this.imgSet.classList.remove('is-animating');
@@ -103,7 +104,7 @@ class ImageSet {
     this.imgSet.classList.remove('is-expanded');
 
     this.imgItems.forEach((img, i) => {
-      img.style.transform = `translateY(${this.rectInfo[i].y - 60}px)`;
+      img.style.transform = `translateY(${this.rectInfo[i].top - 60}px)`;
     });
 
     await rafPromise();

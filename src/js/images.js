@@ -83,6 +83,7 @@ class ImageSet {
     const animationPromises = this.imgItems.map((img, i) => {
       img.style.transform = `rotate(0deg) translateY(${this.rectInfo[i].y -
         60}px)`; // "magic" number (padding + margin)
+      // img.getBoundingClientRect();
       return listenOnce(img, 'transitionend');
     });
     // when all elements are done animating
@@ -111,13 +112,17 @@ class ImageSet {
     this.imgSet.classList.remove('is-flat');
 
     const animationPromises = this.imgItems.map(img => {
-      img.removeAttribute('style');
+      // img.getBoundingClientRect();
+      // img.removeAttribute('style');
+      img.style.removeProperty('transform');
+      img.getBoundingClientRect();
       return listenOnce(img, 'transitionend');
     });
 
-    Promise.all(animationPromises).then(() =>
-      this.imgSet.classList.remove('is-animating'),
-    );
+    Promise.all(animationPromises).then(async () => {
+      await rafPromise();
+      this.imgSet.classList.remove('is-animating');
+    });
   }
 }
 

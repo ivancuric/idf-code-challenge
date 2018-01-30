@@ -19,7 +19,7 @@
   max-width: 90vw;
   margin: 40px auto;
   position: relative;
-  transition: opacity 650ms $ease;
+  transition: opacity $long $ease;
 
   &:not(.is-loaded) {
     opacity: 0;
@@ -36,22 +36,25 @@
   left: 0;
   // it's ok to have layers here and it adds antialiasing for the angled edges
   will-change: transform;
+  display: table; // fit to contents
 
   // the z-indexed shadow
   &::before {
     @include divfill();
+    display: block;
     content: '';
     z-index: 0;
-    transition: opacity 650ms $ease, visibility 650ms $ease;
+    transition: opacity $long $ease, visibility $long $ease;
     visibility: visible;
   }
 
   // the flat shadow
   &::after {
     @include divfill();
+    display: block;
     content: '';
     z-index: 0;
-    transition: opacity 650ms $ease, visibility 650ms $ease;
+    transition: opacity $long $ease, visibility $long $ease;
     box-shadow: $z1;
     opacity: 0;
     visibility: hidden;
@@ -89,7 +92,7 @@
 
   // sorry for the nesting
   .is-animating & {
-    transition: transform 650ms $ease;
+    transition: transform $long $ease !important;
   }
 
   .is-expanded & {
@@ -126,8 +129,8 @@
 
 .img {
   display: block;
-  width: 100%;
-  transition: filter 250ms $ease;
+  max-width: 100%;
+  transition: filter $short $ease;
   visibility: hidden;
 
   .is-loaded & {

@@ -21,11 +21,11 @@ export function listenOnce(element, ...events) {
   return new Promise(resolve => {
     const onEvent = event => {
       // prevent event bubbling
-      if (event.target !== element) {
-        return;
-      }
+      event.stopPropagation();
+      events.forEach(event => {
+        element.removeEventListener(event, onEvent);
+      });
       resolve(event);
-      element.removeEventListener(event, onEvent);
     };
     events.forEach(event => {
       element.addEventListener(event, onEvent);

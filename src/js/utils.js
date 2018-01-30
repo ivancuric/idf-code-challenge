@@ -27,6 +27,7 @@ export function listenOnce(element, ...events) {
       });
       resolve(event);
     };
+
     events.forEach(event => {
       element.addEventListener(event, onEvent);
     });

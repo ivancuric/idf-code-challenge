@@ -131,6 +131,7 @@
   display: block;
   max-width: 100%;
   transition: filter $short $ease;
+  will-change: filter;
   visibility: hidden;
 
   .is-loaded & {
@@ -139,6 +140,7 @@
 
   .is-touch.is-expanded & {
     filter: none;
+    transition: filter $long $ease;
   }
 }
 

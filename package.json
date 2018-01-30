@@ -81,6 +81,7 @@
     "stylelint-scss": "^2.2.0",
     "svgo": "^0.7.2",
     "svgo-loader": "^1.2.1",
+    "uglifyjs-webpack-plugin": "^1.1.8",
     "wait-on": "^2.1.0",
     "webfontloader": "^1.6.28",
     "webpack": "^3.10.0",

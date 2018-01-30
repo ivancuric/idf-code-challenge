@@ -72,7 +72,7 @@ const configureBabelLoader = browserlist => ({
             debug: false,
             modules: false,
             useBuiltIns: true,
-            exclude: ['transform-regenerator'],
+            // exclude: ['transform-regenerator'],
             targets: {
               browsers: browserlist,
             },
@@ -83,7 +83,7 @@ const configureBabelLoader = browserlist => ({
         'transform-object-rest-spread',
         'transform-class-properties',
         'syntax-dynamic-import',
-        'babel-plugin-async-to-promises',
+        // 'babel-plugin-async-to-promises',
       ],
     },
   },

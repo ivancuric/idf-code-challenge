@@ -77,7 +77,8 @@ class ImageSet {
     this.imgSet.getBoundingClientRect();
 
     // START THE ANIMATION
-    this.imgSet.classList.add('is-animating', 'is-flat');
+    this.imgSet.classList.add('is-animating');
+    this.imgSet.classList.add('is-flat');
 
     // using Promise.all to accomodate for mixed or staggered transition durations
     const animationPromises = this.imgItems.map((img, i) => {

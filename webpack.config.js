@@ -162,12 +162,7 @@ const legacyConfig = Object.assign({}, baseConfig, {
   },
   module: {
     rules: [
-      configureBabelLoader([
-        '> 1%',
-        'last 2 versions',
-        'Firefox ESR',
-        'not ie < 11',
-      ]),
+      configureBabelLoader(['last 1 Chrome versions']),
       configureSvgLoader(),
     ],
   },
